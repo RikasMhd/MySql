@@ -26,20 +26,6 @@ MariaDB [(none)]> SHOW DATABASES;
 
 MariaDB [(none)]> USE schema;
 Database changed
-MariaDB [schema]> SHOW DATABASES;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| performance_schema |
-| phpmyadmin         |
-| rikas              |
-| schema             |
-| student            |
-+--------------------+
-7 rows in set (0.002 sec)
-
 MariaDB [student]> SHOW TABLES;
 +-------------------+
 | Tables_in_student |
@@ -240,4 +226,5 @@ MariaDB [Personal_db]> SELECT COUNT(Name) FROM Personal;
 +-------------+
 |           6 |
 +-------------+
+
 1 row in set (0.001 sec)
