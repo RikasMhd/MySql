@@ -26,19 +26,6 @@ MariaDB [(none)]> SHOW DATABASES;
 
 MariaDB [(none)]> USE schema;
 Database changed
-MariaDB [schema]> SHOW DATABASES;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| performance_schema |
-| phpmyadmin         |
-| rikas              |
-| schema             |
-| test               |
-+--------------------+
-7 rows in set (0.001 sec)
 
 MariaDB [schema]> SELECT version();
 +-----------------+
@@ -72,7 +59,6 @@ MariaDB [schema]> SELECT VERSION();CURRENT_TIME;
 +-----------------+
 1 row in set (0.001 sec)
 
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'CURRENT_TIME' at line 1
 MariaDB [schema]> SELECT VERSION();SELECT NOW();
 +-----------------+
 | VERSION()       |
@@ -111,20 +97,6 @@ MariaDB [schema]> SELECT SIN(PI()/4);
 | 0.7071067811865476 |
 +--------------------+
 1 row in set (0.004 sec)
-
-MariaDB [schema]> SHOW DATABASES;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| performance_schema |
-| phpmyadmin         |
-| rikas              |
-| schema             |
-| test               |
-+--------------------+
-7 rows in set (0.001 sec)
 
 MariaDB [schema]> USE phpmyadmin;
 Database changed
@@ -346,3 +318,4 @@ MariaDB [rikas]> DESCRIBE tutorial_tb1;
 | Fees            | decimal(3,1) | YES  |     | NULL    |                |
 +-----------------+--------------+------+-----+---------+----------------+
 5 rows in set (0.042 sec)
+
