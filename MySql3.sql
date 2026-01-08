@@ -62,3 +62,158 @@ MariaDB [Rikas]> SELECT * FROM Student_Marks;
 | 2204 |    92 |
 +------+-------+
 4 rows in set (0.001 sec)
+
+=================================================================================================================
+MariaDB [pscompany]> CREATE TABLE products(
+    -> product_ID INT NOT NULL AUTO_INCREMENT,
+    -> productCode VARCHAR(10),
+    -> Name VARCHAR(50),
+    -> Quantity INT ,
+    -> Price INT,
+    -> PRIMARY KEY (product_ID));
+Query OK, 0 rows affected (0.089 sec)
+
+MariaDB [pscompany]> INSERT INTO productS
+    -> (product_ID,productCode,Name,Quantity,Price)
+    -> VALUES(1001,"Pen","Pen Red",50000,3);
+Query OK, 1 row affected (0.040 sec)
+
+MariaDB [pscompany]> SELECT * FROM products;
++------------+-------------+---------+----------+-------+
+| product_ID | productCode | Name    | Quantity | Price |
++------------+-------------+---------+----------+-------+
+|       1001 | Pen         | Pen Red |    50000 |     3 |
++------------+-------------+---------+----------+-------+
+1 row in set (0.001 sec)
+
+MariaDB [pscompany]> INSERT INTO products(productCode,Name,Quantity,Price)
+    -> VALUES("Pen","Pen Blue",8000,3),
+    -> ("Pen","Pen Black",2000,3),
+    -> ("Pec","Pencil 2B",10000,1.5),
+    -> ("Pec","Pencil 2H",10000,1.5),
+    -> ("Pec","Pencil 3B",500,1);
+Query OK, 5 rows affected (0.029 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+MariaDB [pscompany]> SELECT * FROM products;
++------------+-------------+-----------+----------+-------+
+| product_ID | productCode | Name      | Quantity | Price |
++------------+-------------+-----------+----------+-------+
+|       1001 | Pen         | Pen Red   |    50000 |     3 |
+|       1002 | Pen         | Pen Blue  |     8000 |     3 |
+|       1003 | Pen         | Pen Black |     2000 |     3 |
+|       1004 | Pec         | Pencil 2B |    10000 |     2 |
+|       1005 | Pec         | Pencil 2H |    10000 |     2 |
+|       1006 | Pec         | Pencil 3B |      500 |     1 |
++------------+-------------+-----------+----------+-------+
+6 rows in set (0.000 sec)
+
+MariaDB [pscompany]> SELECT * FROM products WHERE Quantity<200 OR Price<1.2;
++------------+-------------+-----------+----------+-------+
+| product_ID | productCode | Name      | Quantity | Price |
++------------+-------------+-----------+----------+-------+
+|       1006 | Pec         | Pencil 3B |      500 |     1 |
++------------+-------------+-----------+----------+-------+
+1 row in set (0.001 sec)
+
+MariaDB [pscompany]> SELECT * FROM products WHERE NOT Quantity<200 OR Price<1.2;
++------------+-------------+-----------+----------+-------+
+| product_ID | productCode | Name      | Quantity | Price |
++------------+-------------+-----------+----------+-------+
+|       1001 | Pen         | Pen Red   |    50000 |     3 |
+|       1002 | Pen         | Pen Blue  |     8000 |     3 |
+|       1003 | Pen         | Pen Black |     2000 |     3 |
+|       1004 | Pec         | Pencil 2B |    10000 |     2 |
+|       1005 | Pec         | Pencil 2H |    10000 |     2 |
+|       1006 | Pec         | Pencil 3B |      500 |     1 |
++------------+-------------+-----------+----------+-------+
+6 rows in set (0.001 sec)
+
+MariaDB [pscompany]> SELECT * FROM products WHERE NOT Price>1.2;
++------------+-------------+-----------+----------+-------+
+| product_ID | productCode | Name      | Quantity | Price |
++------------+-------------+-----------+----------+-------+
+|       1006 | Pec         | Pencil 3B |      500 |     1 |
++------------+-------------+-----------+----------+-------+
+1 row in set (0.000 sec)
+
+MariaDB [pscompany]> SELECT * FROM products WHERE Name IN ('Pen Red','Pen Black');
++------------+-------------+-----------+----------+-------+
+| product_ID | productCode | Name      | Quantity | Price |
++------------+-------------+-----------+----------+-------+
+|       1001 | Pen         | Pen Red   |    50000 |     3 |
+|       1003 | Pen         | Pen Black |     2000 |     3 |
++------------+-------------+-----------+----------+-------+
+2 rows in set (0.001 sec)
+
+MariaDB [pscompany]> SELECT * FROM products WHERE Price BETWEEN 1.25 AND 2;
++------------+-------------+-----------+----------+-------+
+| product_ID | productCode | Name      | Quantity | Price |
++------------+-------------+-----------+----------+-------+
+|       1004 | Pec         | Pencil 2B |    10000 |     2 |
+|       1005 | Pec         | Pencil 2H |    10000 |     2 |
++------------+-------------+-----------+----------+-------+
+2 rows in set (0.001 sec)
+
+MariaDB [pscompany]> SELECT Name,Price FROM products WHERE Name LIKE "Pencil%";
++-----------+-------+
+| Name      | Price |
++-----------+-------+
+| Pencil 2B |     2 |
+| Pencil 2H |     2 |
+| Pencil 3B |     1 |
++-----------+-------+
+3 rows in set (0.001 sec)
+
+MariaDB [pscompany]> SELECT MAX(Price),MIN(Price) FROM products;
++------------+------------+
+| MAX(Price) | MIN(Price) |
++------------+------------+
+|          3 |          1 |
++------------+------------+
+1 row in set (0.001 sec)
+
+MariaDB [pscompany]> DELETE FROM products WHERE product_ID=1005;
+Query OK, 1 row affected (0.054 sec)
+
+MariaDB [pscompany]> SELECT * FROM products;
++------------+-------------+-----------+----------+-------+
+| product_ID | productCode | Name      | Quantity | Price |
++------------+-------------+-----------+----------+-------+
+|       1001 | Pen         | Pen Red   |    50000 |     3 |
+|       1002 | Pen         | Pen Blue  |     8000 |     3 |
+|       1003 | Pen         | Pen Black |     2000 |     3 |
+|       1004 | Pec         | Pencil 2B |    10000 |     2 |
+|       1006 | Pec         | Pencil 3B |      500 |     1 |
++------------+-------------+-----------+----------+-------+
+5 rows in set (0.000 sec)
+
+MariaDB [pscompany]> SELECT * FROM products;
++------------+-------------+-----------+----------+-------+
+| product_ID | productCode | Name      | Quantity | Price |
++------------+-------------+-----------+----------+-------+
+|       1001 | Pen         | Pen Red   |    50000 |     3 |
+|       1002 | Pen         | Pen Blue  |     8000 |     3 |
+|       1003 | Pen         | Pen Black |     2000 |     3 |
+|       1004 | Pec         | Pencil 2B |    10000 |     2 |
+|       1006 | Pec         | Pencil 3B |      500 |     1 |
++------------+-------------+-----------+----------+-------+
+5 rows in set (0.000 sec)
+
+MariaDB [pscompany]> UPDATE products
+    -> SET Name="Pen Green"
+    -> WHERE product_ID=1002;
+Query OK, 1 row affected (0.031 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [pscompany]> SELECT * FROM products;
++------------+-------------+-----------+----------+-------+
+| product_ID | productCode | Name      | Quantity | Price |
++------------+-------------+-----------+----------+-------+
+|       1001 | Pen         | Pen Red   |    50000 |     3 |
+|       1002 | Pen         | Pen Green |     8000 |     3 |
+|       1003 | Pen         | Pen Black |     2000 |     3 |
+|       1004 | Pec         | Pencil 2B |    10000 |     2 |
+|       1006 | Pec         | Pencil 3B |      500 |     1 |
++------------+-------------+-----------+----------+-------+
+5 rows in set (0.000 sec)
