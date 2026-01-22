@@ -216,4 +216,5 @@ MariaDB [pscompany]> SELECT * FROM products;
 |       1004 | Pec         | Pencil 2B |    10000 |     2 |
 |       1006 | Pec         | Pencil 3B |      500 |     1 |
 +------------+-------------+-----------+----------+-------+
+
 5 rows in set (0.000 sec)
