@@ -115,6 +115,9 @@ Query OK, 0 rows affected (0.074 sec)
 MariaDB [Student_Marks]> CREATE DATABASE University;
 Query OK, 1 row affected (0.002 sec)
 
+MariaDB [Student_Marks]> use University ;
+Database changed
+    
 MariaDB [Student_Marks]> CREATE TABLE Department(
     -> Dept_ID INT PRIMARY KEY,
     -> Dept_Name VARCHAR(50),
