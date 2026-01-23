@@ -21,6 +21,18 @@ MariaDB [Student_Marks]> CREATE TABLE Marks(
     -> Marks DECIMAL(5,2));
 Query OK, 0 rows affected (0.154 sec)
 
+    MariaDB [student_marks]> Create table Customers(
+    -> Customer_ID int not null auto_increment,
+    -> CustomerName varchar(30),
+    -> ContactName varchar(30),
+    -> Address varchar(50),
+    -> City varchar(20),
+    ->
+    -> PostalCode varchar(60),
+    -> Country varchar(20),
+    -> primary key(Customer_ID));
+Query OK, 0 rows affected (0.210 sec)
+
 MariaDB [Student_Marks]> INSERT INTO Marks
     -> VALUES("1","Fred","Jones",78)
     -> ,("2","Bill","James",67),
@@ -276,3 +288,14 @@ MariaDB [Student_Marks]> select MIN(Marks) AS Min_Marks,MAX(Marks) AS Max_Marks 
 1 row in set (0.001 sec)
 
 MariaDB [Student_Marks]>
+MariaDB [student_marks]> Create table Customers(
+    -> Customer_ID int not null auto_increment,
+    -> CustomerName varchar(30),
+    -> ContactName varchar(30),
+    -> Address varchar(50),
+    -> City varchar(20),
+    ->
+    -> PostalCode varchar(60),
+    -> Country varchar(20),
+    -> primary key(Customer_ID));
+Query OK, 0 rows affected (0.210 sec)
