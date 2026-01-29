@@ -304,3 +304,61 @@ MariaDB [staff]> select * from staff where DNum=4 or 5;
 +-------+------------+-----------+----------+------+
 6 rows in set (0.001 sec)
 
+MariaDB [staff]> select min(Salary) from staff;
++-------------+
+| min(Salary) |
++-------------+
+|    25000.00 |
++-------------+
+1 row in set (0.001 sec)
+
+MariaDB [staff]> select max(Salary) from staff;
++-------------+
+| max(Salary) |
++-------------+
+|    43000.00 |
++-------------+
+1 row in set (0.001 sec)
+
+MariaDB [staff]> select count(*) as StaffCount from staff where Salary>(select avg(salary) from staff);     --21st
++------------+
+| StaffCount |
++------------+
+|          3 |
++------------+
+1 row in set (0.001 sec)
+
+MariaDB [staff]> select DNum from staff group by DNum having count(*)>2;   --22nd
++------+
+| DNum |
++------+
+|    5 |
++------+
+1 row in set (0.001 sec)
+    
+MariaDB [staff]> select DNum from staff group by DNum having sum(Salary)>70000;       --23rd
++------+
+| DNum |
++------+
+|    5 |
++------+
+1 row in set (0.001 sec)
+
+MariaDB [staff]> select DNum from staff group by DNum having sum(Salary)>50000;      
++------+
+| DNum |
++------+
+|    4 |
+|    5 |
++------+
+2 rows in set (0.001 sec)
+
+MariaDB [staff]> select MAX(Salary) as Second_Salary from staff where Salary<(select max(Salary) from staff);
++---------------+
+| Second_Salary |
++---------------+
+|      40000.00 |
++---------------+
+1 row in set (0.001 sec)
+
+
